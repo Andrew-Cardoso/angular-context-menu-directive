@@ -1,0 +1,12 @@
+<div
+  [@animate]="animationState"
+  (mouseleave)="close()"
+  (mouseenter)="resetTimeout()"
+  [style.top]="style.top"
+  [style.bottom]="style.bottom"
+  [style.left]="style.left"
+  [style.right]="style.right"
+  [style.transform-origin]="style.transformOrigin"
+>
+  <ng-template #template></ng-template>
+</div>

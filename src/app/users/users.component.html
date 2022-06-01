@@ -1,0 +1,37 @@
+<main>
+  <article>
+    <section><p>photo</p></section>
+    <section><p>id</p></section>
+    <section><p>email</p></section>
+    <section><p>name</p></section>
+    <section><p>role</p></section>
+    <section><p>last active</p></section>
+    <section></section>
+    <ng-container *ngFor="let user of users$ | async">
+      <section>{{ user.photo }}</section>
+      <section>{{ user.id }}</section>
+      <section>{{ user.email }}</section>
+      <section>{{ user.name }}</section>
+      <section>{{ user.role }}</section>
+      <section>{{ user.lastActive }}</section>
+      <section>
+        <button class="transparent" [appContextMenu]="menu" (mouseenter)="selectedUser$.next(user)">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" />
+        </svg>
+        </button>
+        
+      </section>
+    </ng-container>
+  </article>
+</main>
+<ng-template #menu>
+  <div *ngIf="selectedUser$ | async as user">
+    <ul>
+      <li>Details {{user.name}}</li>
+      <li>Send email to {{user.email}}</li>
+      <li>Change {{user.role}} role</li>
+      <li>Ban {{user.name}}</li>
+    </ul>
+  </div>
+</ng-template>
